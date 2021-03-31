@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "978960435356",
+    "project_id": "famdoc-app",
+    "storage_bucket": "famdoc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978960435356:android:70d953a9ddefe9e7f84559",
+        "android_client_info": {
+          "package_name": "com.example.famdoc_doctor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978960435356-fi7eep17ac238oka7t131q0j29dravg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmIETDnVOdbW55ZptjfMeryIFhBey566Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978960435356-fi7eep17ac238oka7t131q0j29dravg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978960435356:android:d57bef83d2a74fbbf84559",
+        "android_client_info": {
+          "package_name": "com.example.famdoc_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978960435356-fi7eep17ac238oka7t131q0j29dravg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmIETDnVOdbW55ZptjfMeryIFhBey566Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978960435356-fi7eep17ac238oka7t131q0j29dravg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
