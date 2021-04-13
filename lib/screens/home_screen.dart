@@ -1,22 +1,48 @@
+import 'package:famdoc_doctor_app/screens/dashboard_screen.dart';
 import 'package:famdoc_doctor_app/screens/login_screen.dart';
+import 'package:famdoc_doctor_app/services/drawer_services.dart';
+import 'package:famdoc_doctor_app/widgets/drawer_menu_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String id = 'home-screen';
 
   @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  DrawerServices _services = DrawerServices();
+  GlobalKey<SliderMenuContainerState> _key =
+      new GlobalKey<SliderMenuContainerState>();
+  String title;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
-            Navigator.pushReplacementNamed(context, LoginScreen.id);
-          },
-          child: Text('Log Out'),
-        ),
-      ),
+      body: SliderMenuContainer(
+          appBarColor: Colors.white,
+          appBarHeight: 80,
+          key: _key,
+          sliderMenuOpenSize: 280,
+          title: Text(''),
+          trailing: Row(
+            children: [
+              IconButton(icon: Icon(CupertinoIcons.search), onPressed: () {}),
+              IconButton(icon: Icon(CupertinoIcons.bell), onPressed: () {}),
+            ],
+          ),
+          sliderMenu: MenuWidget(
+            onItemClick: (title) {
+              _key.currentState.closeDrawer();
+              setState(() {
+                this.title = title;
+              });
+            },
+          ),
+          sliderMain: _services.drawerScreen(title)),
     );
   }
 }

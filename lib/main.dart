@@ -1,4 +1,5 @@
 import 'package:famdoc_doctor_app/providers/auth_provider.dart';
+import 'package:famdoc_doctor_app/screens/add_new_time_screen.dart';
 import 'package:famdoc_doctor_app/screens/home_screen.dart';
 import 'package:famdoc_doctor_app/screens/login_screen.dart';
 import 'package:famdoc_doctor_app/screens/register_screen.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         LoginScreen.id:(context) => LoginScreen(),
         ResetPassword.id:(context) => ResetPassword(),
+        AddNewTime.id:(context) => AddNewTime(),
       },
     );
   }

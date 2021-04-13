@@ -21,11 +21,13 @@ class _RegisterFormState extends State<RegisterForm> {
   var _nameTextEditingController = TextEditingController();
   var _idTextEditingController = TextEditingController();
   var _hospitalTextEditingController = TextEditingController();
+  var _specialityTextEditingController = TextEditingController();
   String email;
   String password;
   String mobile;
   String docName;
   String docID;
+  String speciality;
   bool _isLoading = false;
 
   Future<String> uploadFile(filePath) async {
@@ -227,6 +229,30 @@ class _RegisterFormState extends State<RegisterForm> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
+                    onChanged: (value) {
+                      _specialityTextEditingController.text = value;
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.supervised_user_circle_sharp),
+                      labelText: 'Speciality',
+                      contentPadding: EdgeInsets.zero,
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 2, color: Theme.of(context).primaryColor)),
+                      focusColor: Theme.of(context).primaryColor,
+                      errorBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2, color: Colors.redAccent)),
+                      focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2, color: Colors.redAccent)),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextFormField(
                     controller: _passwordTextController,
                     obscureText: true,
                     validator: (value) {
@@ -367,10 +393,10 @@ class _RegisterFormState extends State<RegisterForm> {
                                           hospital:
                                               _hospitalTextEditingController
                                                   .text,
+                                          speciality: _specialityTextEditingController.text
                                         );
 
                                         setState(() {
-                                          
                                           _isLoading = false;
                                         });
                                         Navigator.pushReplacementNamed(

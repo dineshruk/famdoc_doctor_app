@@ -143,7 +143,8 @@ class AuthProvider extends ChangeNotifier {
       String docName,
       String mobile,
       String docID,
-      String hospital}) {
+      String hospital,
+      String speciality}) {
     User user = FirebaseAuth.instance.currentUser;
     DocumentReference _doctors =
         FirebaseFirestore.instance.collection('doctors').doc(user.uid);
@@ -154,6 +155,7 @@ class AuthProvider extends ChangeNotifier {
       'email': this.email,
       'docID': docID,
       'hospital': hospital,
+      'speciality' : speciality,
       'address': '${this.placeName}: ${this.docAddress}',
       'location': GeoPoint(this.docLatitude, this.docLongitude),
       'docAvaiable': true,
