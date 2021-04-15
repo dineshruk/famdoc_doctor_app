@@ -1,4 +1,6 @@
 import 'package:famdoc_doctor_app/screens/add_new_time_screen.dart';
+import 'package:famdoc_doctor_app/widgets/published_package.dart';
+import 'package:famdoc_doctor_app/widgets/unpublished_package.dart';
 import 'package:flutter/material.dart';
 
 class SetTimeScreen extends StatelessWidget {
@@ -77,12 +79,8 @@ class SetTimeScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 child: TabBarView(children: [
-                  Center(
-                    child: Text('Published Hire Detail'),
-                  ),
-                  Center(
-                    child: Text('Un-Published Hire Detail'),
-                  ),
+                  PublishedPckages(),
+                  UnPublishedPckages(),
                 ]),
               ),
             )

@@ -158,7 +158,7 @@ class AuthProvider extends ChangeNotifier {
       'speciality' : speciality,
       'address': '${this.placeName}: ${this.docAddress}',
       'location': GeoPoint(this.docLatitude, this.docLongitude),
-      'docAvaiable': true,
+      'docAvaiable': false,
       'rating': 0.0,
       'totalRating': 0,
       'verified': false,

@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:famdoc_doctor_app/providers/package_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MenuWidget extends StatefulWidget {
   final Function(String) onItemClick;
@@ -35,6 +37,9 @@ class _MenuWidgetState extends State<MenuWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var _provider = Provider.of<PackageProvider>(context);
+    _provider.getDocName(doctorData !=null ? doctorData.data()['docName']: '');
+
     return Container(
       color: Colors.grey[100],
       padding: const EdgeInsets.only(top: 30),
@@ -55,8 +60,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                     child: CircleAvatar(
                       radius: 30,
                       backgroundImage: doctorData != null
-                          ?  NetworkImage(doctorData.data()['imageURL']
-                          ): null,
+                          ? NetworkImage(doctorData.data()['imageURL'])
+                          : null,
                     ),
                   ),
                   SizedBox(
