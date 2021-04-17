@@ -75,7 +75,7 @@ class _EditViewPackageState extends State<EditViewPackage> {
   @override
   Widget build(BuildContext context) {
     var _provider = Provider.of<PackageProvider>(context);
-    _provider.resetProvider();
+    
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -137,7 +137,6 @@ class _EditViewPackageState extends State<EditViewPackage> {
                         }
                       });
                     } else {
-                      
                       _provider.updatePackage(
                         context: context,
                         packageName: _packageText.text,
@@ -152,6 +151,7 @@ class _EditViewPackageState extends State<EditViewPackage> {
                       );
                       EasyLoading.dismiss();
                     }
+                    _provider.resetProvider();
                   }
                 },
                 child: Container(
@@ -289,7 +289,7 @@ class _EditViewPackageState extends State<EditViewPackage> {
                                     child: AbsorbPointer(
                                       absorbing: true,
                                       child: TextFormField(
-                                        enabled: false,
+                                        //enabled: false,
                                         controller: _categoryTextController,
                                         validator: (value) {
                                           if (value.isEmpty) {
@@ -308,34 +308,33 @@ class _EditViewPackageState extends State<EditViewPackage> {
                                       ),
                                     ),
                                   ),
-                                  // Visibility(
-                                    
-                                  //   visible: _editing ? false : true,
-                                  //   child: IconButton(
-                                  //       icon: Icon(Icons.edit_outlined),
-                                  //       onPressed: () {
-                                  //         showDialog(
-                                  //             context: context,
-                                  //             builder: (BuildContext context) {
-                                  //               return CategoryList();
-                                  //             }).whenComplete(() {
-                                  //           setState(() {
-                                  //             _categoryTextController.text =
-                                  //                 _provider.selectedCategory;
-                                  //             _visible = true;
-                                  //           });
-                                  //         });
-                                  //       }),
-                                  //),
+                                  Visibility(
+                                    visible: _editing ? false : true,
+                                    child: IconButton(
+                                        icon: Icon(Icons.edit_outlined),
+                                        onPressed: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return CategoryList();
+                                              }).whenComplete(() {
+                                            setState(() {
+                                              _categoryTextController.text =
+                                                  _provider.selectedCategory;
+                                              _visible = true;
+                                            });
+                                          });
+                                        }),
+                                  ),
                                 ],
                               ),
                             ),
-                            Padding(
-                              
+                            Visibility(
+                              visible: _visible,
+                              child: Padding(
                                 padding:
                                     const EdgeInsets.only(top: 10, bottom: 20),
                                 child: Row(
-                                  
                                   children: [
                                     Text(
                                       'Time',
@@ -346,11 +345,10 @@ class _EditViewPackageState extends State<EditViewPackage> {
                                       width: 10,
                                     ),
                                     Expanded(
-                                      
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: TextFormField(
-                                          enabled: false,
+                                          // enabled: false,
                                           controller:
                                               _subcategoryTextController,
                                           validator: (value) {
@@ -371,24 +369,24 @@ class _EditViewPackageState extends State<EditViewPackage> {
                                         ),
                                       ),
                                     ),
-                                    // IconButton(
-                                    //     icon: Icon(Icons.edit_outlined),
-                                    //     onPressed: () {
-                                    //       showDialog(
-                                    //           context: context,
-                                    //           builder: (BuildContext context) {
-                                    //             return SubCategoryList();
-                                    //           }).whenComplete(() {
-                                    //         setState(() {
-                                    //           _subcategoryTextController.text =
-                                    //               _provider.selectedSubCategory;
-                                    //         });
-                                    //       });
-                                    //     }),
+                                    IconButton(
+                                        icon: Icon(Icons.edit_outlined),
+                                        onPressed: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return SubCategoryList();
+                                              }).whenComplete(() {
+                                            setState(() {
+                                              _subcategoryTextController.text =
+                                                  _provider.selectedSubCategory;
+                                            });
+                                          });
+                                        }),
                                   ],
                                 ),
                               ),
-                        
+                            ),
                             Container(
                               child: Row(
                                 children: [

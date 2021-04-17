@@ -38,7 +38,8 @@ class _MenuWidgetState extends State<MenuWidget> {
   @override
   Widget build(BuildContext context) {
     var _provider = Provider.of<PackageProvider>(context);
-    _provider.getDocName(doctorData !=null ? doctorData.data()['docName']: '');
+    _provider
+        .getDocName(doctorData != null ? doctorData.data()['docName'] : '');
 
     return Container(
       color: Colors.grey[100],
@@ -67,16 +68,28 @@ class _MenuWidgetState extends State<MenuWidget> {
                   SizedBox(
                     width: 13,
                   ),
-                  Text(
-                    doctorData != null
-                        ? doctorData.data()['docName']
-                        : 'Doctor Name',
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        'Dr. ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        doctorData != null
+                            ? doctorData.data()['docName']
+                            : 'Doctor Name',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -86,7 +99,8 @@ class _MenuWidgetState extends State<MenuWidget> {
             height: 20,
           ),
           sliderItem('Dashboard', Icons.dashboard_outlined),
-          sliderItem('Set Time', Icons.av_timer_outlined),
+          sliderItem('Set Packages', CupertinoIcons.bag_fill_badge_plus),
+          sliderItem('Cover Images',CupertinoIcons.photo_fill),
           sliderItem('Ticket', CupertinoIcons.tickets_fill),
           sliderItem('Hire Request', Icons.list_alt_outlined),
           sliderItem('Reports', Icons.stacked_bar_chart),
